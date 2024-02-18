@@ -15,7 +15,7 @@ class ItemController extends Controller
 	//查询解析器构建
 	public function select(){
         //开启sql的log跟踪
-//        DB::enableQueryLog()->enableQueryLog();#开启执行日志;
+//      DB::enableQueryLog()->enableQueryLog();#开启执行日志;
         #定义表名称的基本属性信息
     	$db = Db::table('a_table');
     	//查询转换为对应的数组
@@ -42,15 +42,9 @@ class ItemController extends Controller
      	print_R($data);
      	echo '</pre>';
 
-//        print_r(DB::connection());  //获取查询语句、参数和执行时间
+        //print_r(DB::connection());  //获取查询语句、参数和执行时间
         exit;
 
-
- //     	echo '<pre>';
-//     	var_dump($logger);
-//     	echo '</pre>';
-//     	exit;
-//     	exit;
     }
 
     //插入数据
@@ -58,16 +52,15 @@ class ItemController extends Controller
     	#定义关联操作表
     	$db = DB::table('a_table');
     	//使用insert来增加记录数据  --多条数据
-
     	//插入数据
-    	// $result = $db->insert([
-    	// 	'a_name'=>'来吧你的菜11','a_part'=>'调侃三人组' ,
-    	// ]);
+    	 $result = $db->insert([
+    	 	'a_name'=>'来吧你的菜11','a_part'=>'调侃三人组' ,
+    	 ]);
 
-    	// echo '<pre>';
-    	// var_dump($result);
-    	// echo '</pre>';
-    	// exit;
+    	 echo '<pre>';
+    	 var_dump($result);
+    	 echo '</pre>';
+    	 exit;
 
     	//插入一条--不建议这么用
     	$result = $db->insertGetId([
@@ -120,11 +113,9 @@ class ItemController extends Controller
 	//删除
     public function del(){
     	$db  = DB::table('a_table');
-
     	$id = 5;
     	//删除某个条件下的数组 可以按照条件来进行
     	$ret  = $db->where('a_id','<',$id)->delete();
-
     	//清空整张表
     	// $ret = $db->truncate(); // 清空整张表
     	echo '<pre>';
